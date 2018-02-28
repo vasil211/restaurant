@@ -1,7 +1,11 @@
 package com.bari.dao;
 
+import java.security.MessageDigest;
 import java.sql.*;
 import java.util.*;
+
+import javax.xml.bind.DatatypeConverter;
+
 import com.bari.model.User;
 import com.bari.util.Database;
 
@@ -31,8 +35,7 @@ public class UserDao {
 
 	public User checkIfUserExist(String name, String pass) {
 		try {
-			PreparedStatement ps = connection
-					.prepareStatement("select * from users where Uname = ? and Password = ?");
+			PreparedStatement ps = connection.prepareStatement("select * from users where Uname = ? and Password = ?");
 			ps.setString(1, name);
 			ps.setString(2, pass);
 			ResultSet rs = ps.executeQuery();
@@ -50,31 +53,43 @@ public class UserDao {
 		}
 	}
 
-	public void addUser(User user) {
+	public boolean addUser(User user) {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(
-					"insert into users(FirstName,LastName,Email,Password,Uname,Phone,EGN,,Roles_id,Registration) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+					"insert into users(FirstName,LastName,Email,Password,Uname,Phone,EGN,Roles_id) values (?, ?, ?, ?, ?, ?, ?, 2)");
 
 			preparedStatement.setString(1, user.getFirstName());
 			preparedStatement.setString(2, user.getLastName());
 			preparedStatement.setString(3, user.getEmail());
 			preparedStatement.setString(4, user.getPassword());
 			preparedStatement.setString(5, user.getUname());
-			preparedStatement.setInt(6, user.getPhone());
-			preparedStatement.setInt(7, user.getEGN());
-			preparedStatement.setInt(8, user.getRoles_id());
-			preparedStatement.setDate(9, new java.sql.Date(user.getRegistration().getTime()));
+			preparedStatement.setString(6, user.getPhone());
+			preparedStatement.setString(7, user.getEGN());
 			preparedStatement.executeUpdate();
-
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
+
+	}
+
+	public String hash(String pass) {
+
+		MessageDigest md;
+		byte[] hash = null;
+		try {
+			md = MessageDigest.getInstance("MD5");
+			hash = md.digest(pass.getBytes("UTF-8"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return DatatypeConverter.printHexBinary(hash);
 	}
 
 	public void deleteUser(String user_Id) {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement("delete from users where Uname=?");
-			// Parameters start with 1
 			preparedStatement.setString(1, user_Id);
 			preparedStatement.executeUpdate();
 
@@ -86,13 +101,12 @@ public class UserDao {
 	public void updateUser(User user) {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(
-					"update users set Password=?, Email=?, Roles_id=?, Registration=?" + "where Uname=?");
-			// Parameters start with 1
-			System.out.println(new java.sql.Date(user.getRegistration().getTime()));
-			preparedStatement.setString(1, user.getPassword());
-			preparedStatement.setString(2, user.getEmail());
-			preparedStatement.setInt(3, user.getRoles_id());
-			preparedStatement.setDate(4, new java.sql.Date(user.getRegistration().getTime()));
+					"update users set Email=?, Roles_id=?, FirstName= ?, LastName= ? " + "where Uname= ?");
+
+			preparedStatement.setString(1, user.getEmail());
+			preparedStatement.setInt(2, user.getRoles_id());
+			preparedStatement.setString(3, user.getFirstName());
+			preparedStatement.setString(4, user.getLastName());
 			preparedStatement.setString(5, user.getUname());
 			preparedStatement.executeUpdate();
 

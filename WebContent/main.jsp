@@ -11,6 +11,6 @@
 
 </head>
 <body>
-	<h1>FUCK YOU, YOU HAVE LOGGED IN SUCCESSFULLY!!!</h1>
+	<h1>menu here</h1>
 </body>
 </html>

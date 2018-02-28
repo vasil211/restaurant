@@ -1,17 +1,25 @@
 package com.bari.controller;
 
 import java.io.IOException;
-import java.util.Enumeration;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+//import javax.servlet.ServletConfig;
+//import javax.servlet.ServletException;
+//import javax.servlet.annotation.WebServlet;
+//import javax.servlet.http.HttpServlet;
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletResponse;
+//
+//import java.sql.*;
+//import javax.servlet.*;
+
 import com.bari.dao.UserDao;
 import com.bari.model.User;
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
+import com.mysql.jdbc.PreparedStatement;
 
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -31,6 +39,7 @@ public class UserController extends HttpServlet {
 
 		if (action.equalsIgnoreCase("delete")) {
 			String user_Id = request.getParameter("user_Id");
+			System.out.println(user_Id);
 			dao.deleteUser(user_Id);
 			forward = LIST_USER;
 			request.setAttribute("users", dao.getAllUsers());
@@ -52,38 +61,20 @@ public class UserController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		String uname = request.getParameter("uname");
 		String password = request.getParameter("password");
-		User user = dao.checkIfUserExist(uname, password);
+		String hashedPass= dao.hash(password);
+		User user = dao.checkIfUserExist(uname, hashedPass);
 		if (user != null) {
 			request.getSession().setAttribute("isLogged", true);
 			request.getSession().setAttribute("username", user.getUname());
-			request.getSession().setAttribute("roleId", user.getRoles_id());
+			request.getSession().setAttribute("role_Id", user.getRoles_id());
 			response.sendRedirect(request.getContextPath() + "/dashboard");
 		} else {
 			response.sendRedirect(request.getContextPath() + "/index.jsp?error=wrongNameOrPass");
 		}
-		
-//		User user = new User();
-//		user.setUname(request.getParameter("Uname"));
-//		user.setPassword(request.getParameter("password"));
 
-//		try {
-//			System.out.println("rrrrrrrrrrr" + reg);
-//			user.setRegistration(reg);
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
-//		user.setEmail(request.getParameter("Email"));
-//		String userid = request.getParameter("Uname");
-//		if (userid == null || userid.isEmpty()) {
-//			dao.addUser(user);
-//		} else { // user.setUname(userid); //
-//			dao.checkUser(user);
-//		}
-//
-//		RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
-//		request.setAttribute("users", dao.getAllUsers());
-//		view.forward(request, response);
 	}
+
 }

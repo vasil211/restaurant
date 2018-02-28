@@ -24,9 +24,11 @@ public class Dashboard extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		//SESIQ!!!!!
 		if (request.getSession().getAttribute("isLogged") != null) {
-			int roleId = (int) request.getSession().getAttribute("roleId");
+//!!
+			int roleId = (int) request.getSession().getAttribute("role_Id");
+			
 			if (roleId == 1) {
 				RequestDispatcher view = request.getRequestDispatcher("/listuser.jsp");
 				List<User> users = dao.getAllUsers();
@@ -38,7 +40,7 @@ public class Dashboard extends HttpServlet {
 				view.forward(request, response);
 			} else {
 				RequestDispatcher view = request.getRequestDispatcher("/main.jsp");
-				request.setAttribute("userRole", request.getSession().getAttribute("roleId"));
+				request.setAttribute("userRole", request.getSession().getAttribute("role_Id"));
 				view.forward(request, response);
 			}
 		} else {
