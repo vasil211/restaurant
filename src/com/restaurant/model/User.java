@@ -1,4 +1,4 @@
-package com.bari.model;
+package com.restaurant.model;
 
 import java.util.Date;
 

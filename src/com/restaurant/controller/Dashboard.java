@@ -1,4 +1,4 @@
-package com.bari.controller;
+package com.restaurant.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bari.dao.UserDao;
-import com.bari.model.User;
+import com.restaurant.dao.UserDao;
+import com.restaurant.model.User;
 
 @WebServlet("/Dashboard")
 public class Dashboard extends HttpServlet {
@@ -23,12 +23,13 @@ public class Dashboard extends HttpServlet {
 		dao = new UserDao();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//SESIQ!!!!!
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// SESIQ!!!!!
 		if (request.getSession().getAttribute("isLogged") != null) {
-//!!
+			// !!
 			int roleId = (int) request.getSession().getAttribute("role_Id");
-			
+
 			if (roleId == 1) {
 				RequestDispatcher view = request.getRequestDispatcher("/listuser.jsp");
 				List<User> users = dao.getAllUsers();
@@ -38,18 +39,26 @@ public class Dashboard extends HttpServlet {
 					System.out.println(temp.getUname());
 				}
 				view.forward(request, response);
-			} else {
-				RequestDispatcher view = request.getRequestDispatcher("/main.jsp");
+			} else if (roleId == 2) {
+
+				RequestDispatcher view = request.getRequestDispatcher("/menu.jsp");
 				request.setAttribute("userRole", request.getSession().getAttribute("role_Id"));
 				view.forward(request, response);
+			} else if (roleId == 3) {
+
+			} else if (roleId == 4) {
+
 			}
-		} else {
+		}
+
+		else {
 			response.sendRedirect(request.getContextPath() + "/index.jsp?error=notLoggedIn");
 		}
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		System.out.println("dopost");
 		doGet(request, response);
 	}

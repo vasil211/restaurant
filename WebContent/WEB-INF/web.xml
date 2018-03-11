@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <servlet>
     <servlet-name>UserController</servlet-name>
-    <servlet-class>com.bari.controller.UserController</servlet-class>
+    <servlet-class>com.restaurant.controller.UserController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UserController</servlet-name>
@@ -10,7 +10,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>RegistrationController</servlet-name>
-    <servlet-class>com.bari.controller.RegistrationController</servlet-class>
+    <servlet-class>com.restaurant.controller.RegistrationController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>RegistrationController</servlet-name>
@@ -18,7 +18,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>dashboard</servlet-name>
-    <servlet-class>com.bari.controller.Dashboard</servlet-class>
+    <servlet-class>com.restaurant.controller.Dashboard</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>dashboard</servlet-name>

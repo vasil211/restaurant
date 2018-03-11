@@ -1,4 +1,4 @@
-package com.bari.dao;
+package com.restaurant.dao;
 
 import java.security.MessageDigest;
 import java.sql.*;
@@ -6,8 +6,8 @@ import java.util.*;
 
 import javax.xml.bind.DatatypeConverter;
 
-import com.bari.model.User;
-import com.bari.util.Database;
+import com.restaurant.model.User;
+import com.restaurant.util.Database;
 
 public class UserDao {
 
@@ -15,6 +15,29 @@ public class UserDao {
 
 	public UserDao() {
 		connection = Database.getConnection();
+	}
+
+	public String validEmail(String email) {
+		try {
+
+			String emailCh = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+
+			if (email.equalsIgnoreCase(emailCh)) {
+				String chEmail = email;
+				System.out.println("email ch");
+				return chEmail;
+       
+			}else {
+				String wrongEmail= "wrongEmail";
+				System.out.println("wrong email");
+				return wrongEmail;
+			}
+
+		} catch (Exception ex) {
+			System.out.println("Error in check() -->" + ex.getMessage());
+		}
+		System.out.println("email wrong");
+		return null;
 	}
 
 	public void checkUser(User user) {

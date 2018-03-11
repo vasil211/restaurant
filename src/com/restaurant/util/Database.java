@@ -1,4 +1,4 @@
-package com.bari.util;
+package com.restaurant.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 public class Database {
