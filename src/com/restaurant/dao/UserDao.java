@@ -3,6 +3,8 @@ package com.restaurant.dao;
 import java.security.MessageDigest;
 import java.sql.*;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.xml.bind.DatatypeConverter;
 
@@ -17,28 +19,50 @@ public class UserDao {
 		connection = Database.getConnection();
 	}
 
+	// public String validEmail(String email) {
+	//
+	//
+	// Pattern p = Pattern.compile("^[A-Za-z0-9-]+(\\-[A-Za-z0-9])*@"
+	// + "[A-Za-z0-9-]+(\\.[A-Za-z0-9])");
+	// Matcher m = p.matcher(email);
+	//
+	// if (m.find())
+	// {
+	// System.out.println("Thetta email er loglegt.");
+	// }else{
+	// System.out.println("Thetta email er ekki loglegt.");
+	// }
+	//
+	//
+	//
+	// }
+
 	public String validEmail(String email) {
 		try {
 
-			String emailCh = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+			String emailCh = "^[A-Za-z0-9-]+(\\[A-Za-z0-9])*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9])";
 
 			if (email.equalsIgnoreCase(emailCh)) {
 				String chEmail = email;
 				System.out.println("email ch");
 				return chEmail;
-       
-			}else {
-				String wrongEmail= "wrongEmail";
-				System.out.println("wrong email");
-				return wrongEmail;
+
+			} else {
+				String wrongEmail = "Wrong Email";
+				System.out.println(wrongEmail);
+				// !!!!!!!!!!!!!!!!!!!!!!!!!
+                // return wrongEmail;
+				// !!!!!!!!!!!!!
 			}
 
 		} catch (Exception ex) {
 			System.out.println("Error in check() -->" + ex.getMessage());
 		}
 		System.out.println("email wrong");
-		return null;
+		return email;
+		
 	}
+	
 
 	public void checkUser(User user) {
 		try {
