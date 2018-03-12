@@ -21,10 +21,10 @@ CREATE TABLE roles (
 
 CREATE TABLE menu (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    Name INT UNIQUE NOT NULL,
-    FoodType INT NOT NULL,
+    Name varchar(50) UNIQUE NOT NULL,
+    FoodType varchar(250) NOT NULL,
     Description VARCHAR(250),
-    Price INT NOT NULL
+    Price Double NOT NULL
 );
 
 CREATE TABLE users (

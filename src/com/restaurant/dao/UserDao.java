@@ -3,9 +3,6 @@ package com.restaurant.dao;
 import java.security.MessageDigest;
 import java.sql.*;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import javax.xml.bind.DatatypeConverter;
 
 import com.restaurant.model.User;
@@ -19,24 +16,6 @@ public class UserDao {
 		connection = Database.getConnection();
 	}
 
-	// public String validEmail(String email) {
-	//
-	//
-	// Pattern p = Pattern.compile("^[A-Za-z0-9-]+(\\-[A-Za-z0-9])*@"
-	// + "[A-Za-z0-9-]+(\\.[A-Za-z0-9])");
-	// Matcher m = p.matcher(email);
-	//
-	// if (m.find())
-	// {
-	// System.out.println("Thetta email er loglegt.");
-	// }else{
-	// System.out.println("Thetta email er ekki loglegt.");
-	// }
-	//
-	//
-	//
-	// }
-
 	public String validEmail(String email) {
 		try {
 
@@ -48,11 +27,11 @@ public class UserDao {
 				return chEmail;
 
 			} else {
-				String wrongEmail = "Wrong Email";
+				String wrongEmail = "";
 				System.out.println(wrongEmail);
-				// !!!!!!!!!!!!!!!!!!!!!!!!!
-                // return wrongEmail;
-				// !!!!!!!!!!!!!
+
+				return wrongEmail;
+
 			}
 
 		} catch (Exception ex) {
@@ -60,9 +39,8 @@ public class UserDao {
 		}
 		System.out.println("email wrong");
 		return email;
-		
+
 	}
-	
 
 	public void checkUser(User user) {
 		try {
@@ -100,7 +78,7 @@ public class UserDao {
 		}
 	}
 
-	public boolean addUser(User user) {
+	public boolean addUser(User user) {  
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(
 					"insert into users(FirstName,LastName,Email,Password,Uname,Phone,EGN,Roles_id) values (?, ?, ?, ?, ?, ?, ?, 2)");
@@ -166,7 +144,7 @@ public class UserDao {
 		List<User> users = new ArrayList<User>();
 		try {
 			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery("select * from users");
+			ResultSet rs = statement.executeQuery("select * from users order by ");
 			while (rs.next()) {
 				User user = new User();
 				user.setUname(rs.getString("Uname"));

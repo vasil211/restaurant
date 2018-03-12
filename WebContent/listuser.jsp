@@ -5,35 +5,54 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- <title>All users</title>
-  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<title>All users</title>
+<link
+	href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600'
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
-  
-      <link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
- <form action="UserController" method="Get">
-    <table border=1>
-        <thead>
-            <tr>
-                <th>User Name</th>
-                <th>Email</th>
-               
-            </tr>
-        </thead>
-        <tbody>
-            <c:forEach items="${users}" var="user">
-                <tr>
-                    <td><c:out value="${user.getUname()}" /></td>
-                    <td><c:out value="${user.getEmail()}" /></td>
-                    <td><a href="UserController?action=edit&user_Id=<c:out value="${user.getUname()}"/>">Update</a></td>
-                    <td><a href="UserController?action=delete&user_Id=<c:out value="${user.getUname()}"/>">Delete</a></td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
-    <p><a href="UserController?action=insert">Add User</a></p>
-    </form>
+	<form action="UserController" method="Get">
+		<table border=1>
+			<thead>
+				<tr>
+					<th>Roles_id</th>
+					<th>User Name</th>
+					<th>FirstName</th>
+					<th>LastName</th>
+					<th>Phone</th>
+					<th>EGN</th>
+					<th>Email</th>
+					<th>Registration</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${users}" var="user">
+					<tr>
+						<td><c:out value="${user.getRoles_id()}" /></td>
+						<td><c:out value="${user.getUname()}" /></td>
+						<td><c:out value="${user.getFirstName()}" /></td>
+						<td><c:out value="${user.getLastName()}" /></td>
+						<td><c:out value="${user.getPhone()}" /></td>
+						<td><c:out value="${user.getEGN()}" /></td>
+						<td><c:out value="${user.getEmail()}" /></td>
+						<td><c:out value="${user.getRegistration()}" /></td>
+						<td><a
+							href="UserController?action=edit&user_Id=<c:out value="${user.getUname()}"/>">Update</a></td>
+						<td><a
+							href="UserController?action=delete&user_Id=<c:out value="${user.getUname()}"/>">Delete</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<p>
+			<a href="UserController?action=insert">Add User</a>
+		</p>
+	</form>
 </body>
 </html>
