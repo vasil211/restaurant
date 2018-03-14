@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mysql.jdbc.PreparedStatement;
 import com.restaurant.dao.UserDao;
 import com.restaurant.model.User;
 
@@ -59,7 +58,9 @@ public class UserController extends HttpServlet {
 		if (user != null) {
 			request.getSession().setAttribute("isLogged", true);
 			request.getSession().setAttribute("username", user.getUname());
-			request.getSession().setAttribute("role_Id", user.getRoles_id());
+			
+			request.getSession().setAttribute("role_Id", user.getRole().getId());
+			
 			response.sendRedirect(request.getContextPath() + "/dashboard");
 		} else {
 			response.sendRedirect(request.getContextPath() + "/index.jsp?error=wrongNameOrPass");

@@ -3,8 +3,14 @@ package com.restaurant.model;
 import java.util.Date;
 
 public class User {
-	private String firstName, lastName, email, password, uname, phone, egn;
-	private int roles_id;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String password;
+	private String uname;
+	private String phone;
+	private String egn;
+	private Role role;
 	private Date registration;
 
 	public String getFirstName() {
@@ -77,14 +83,14 @@ public class User {
 		this.egn = egn;
 	}
 
-	public int getRoles_id() {
+	public Role getRole() {
 
-		return this.roles_id;
+		return this.role;
 	}
 
-	public void setRoles_id(int roles_id) {
+	public void setRole(Role role) {
 
-		this.roles_id = roles_id;
+		this.role = role;
 	}
 
 	public Date getRegistration() {
@@ -94,5 +100,6 @@ public class User {
 	public void setRegistration(Date registration) {
 		this.registration = registration;
 	}
+
 
 }

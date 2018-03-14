@@ -29,13 +29,12 @@ public class Dashboard extends HttpServlet {
 		if (request.getSession().getAttribute("isLogged") != null) {
 			// !!
 			int roleId = (int) request.getSession().getAttribute("role_Id");
-
 			if (roleId == 1) {
 				RequestDispatcher view = request.getRequestDispatcher("/listuser.jsp");
-				List<User> users = dao.getAllUsers();
+				List<User> user = dao.getAllUsers();
 
-				request.setAttribute("users", users);
-				for (User temp : users) {
+				request.setAttribute("user", user);
+				for (User temp : user) {
 					System.out.println(temp.getUname());
 				}
 				view.forward(request, response);

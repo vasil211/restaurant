@@ -3,6 +3,8 @@ package com.restaurant.dao;
 import java.security.MessageDigest;
 import java.sql.*;
 import java.util.*;
+
+import com.restaurant.model.Role;
 import javax.xml.bind.DatatypeConverter;
 
 import com.restaurant.model.User;
@@ -16,35 +18,36 @@ public class UserDao {
 		connection = Database.getConnection();
 	}
 
-	public String validEmail(String email) {
-		try {
+	// public String validEmail(String email) {
+	// try {
+	//
+	// String emailCh = "^[A-Za-z0-9-]+(\\[A-Za-z0-9])*@" +
+	// "[A-Za-z0-9-]+(\\.[A-Za-z0-9])";
+	//
+	// if (email.equalsIgnoreCase(emailCh)) {
+	// String chEmail = email;
+	// System.out.println("email ch");
+	// return chEmail;
+	//
+	// } else {
+	//
+	// System.out.println("Wrong Email");
+	//
+	// return null;
+	//
+	// }
 
-			String emailCh = "^[A-Za-z0-9-]+(\\[A-Za-z0-9])*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9])";
-
-			if (email.equalsIgnoreCase(emailCh)) {
-				String chEmail = email;
-				System.out.println("email ch");
-				return chEmail;
-
-			} else {
-				String wrongEmail = "";
-				System.out.println(wrongEmail);
-
-				return wrongEmail;
-
-			}
-
-		} catch (Exception ex) {
-			System.out.println("Error in check() -->" + ex.getMessage());
-		}
-		System.out.println("email wrong");
-		return email;
-
-	}
+	// } catch (Exception ex) {
+	// System.out.println("Error in check() -->" + ex.getMessage());
+	// }
+	// System.out.println("email wrong");
+	// return email;
+	//
+	// }
 
 	public void checkUser(User user) {
 		try {
-			PreparedStatement ps = connection.prepareStatement("select Uname from users where Uname = ?");
+			PreparedStatement ps = connection.prepareStatement("select uname from users where uname = ?");
 			ps.setString(1, user.getUname());
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) // found
@@ -60,14 +63,19 @@ public class UserDao {
 
 	public User checkIfUserExist(String name, String pass) {
 		try {
-			PreparedStatement ps = connection.prepareStatement("select * from users where Uname = ? and Password = ?");
+			PreparedStatement ps = connection.prepareStatement("select * from user where uname = ? and password = ?");
 			ps.setString(1, name);
 			ps.setString(2, pass);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				User user = new User();
-				user.setUname(rs.getString("Uname"));
-				user.setRoles_id(rs.getInt("roles_id"));
+				user.setUname(rs.getString("uname"));
+//
+				RoleDao roleDao = new RoleDao();
+				int role_id = rs.getInt("role_id");
+				Role role = roleDao.getRoleById(role_id);
+				user.setRole(role);
+				//
 				return user;
 			} else {
 				return null;
@@ -78,10 +86,10 @@ public class UserDao {
 		}
 	}
 
-	public boolean addUser(User user) {  
+	public boolean addUser(User user) {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(
-					"insert into users(FirstName,LastName,Email,Password,Uname,Phone,EGN,Roles_id) values (?, ?, ?, ?, ?, ?, ?, 2)");
+					"insert into user(firstName,lastName,email,password,uname,phone,EGN,role_id) values (?, ?, ?, ?, ?, ?, ?, 2)");
 
 			preparedStatement.setString(1, user.getFirstName());
 			preparedStatement.setString(2, user.getLastName());
@@ -114,7 +122,7 @@ public class UserDao {
 
 	public void deleteUser(String user_Id) {
 		try {
-			PreparedStatement preparedStatement = connection.prepareStatement("delete from users where Uname=?");
+			PreparedStatement preparedStatement = connection.prepareStatement("delete from user where uname=?");
 			preparedStatement.setString(1, user_Id);
 			preparedStatement.executeUpdate();
 
@@ -126,10 +134,10 @@ public class UserDao {
 	public void updateUser(User user) {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(
-					"update users set Email=?, Roles_id=?, FirstName= ?, LastName= ? " + "where Uname= ?");
+					"update user set email=?, role_id=?, firstName= ?, lastName= ? " + "where uname= ?");
 
 			preparedStatement.setString(1, user.getEmail());
-			preparedStatement.setInt(2, user.getRoles_id());
+			preparedStatement.setInt(2, user.getRole().getId());
 			preparedStatement.setString(3, user.getFirstName());
 			preparedStatement.setString(4, user.getLastName());
 			preparedStatement.setString(5, user.getUname());
@@ -141,37 +149,48 @@ public class UserDao {
 	}
 
 	public List<User> getAllUsers() {
-		List<User> users = new ArrayList<User>();
+		List<User> user = new ArrayList<User>();
 		try {
 			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery("select * from users order by ");
+			ResultSet rs = statement.executeQuery("select * from user "); // where role_id = 2
 			while (rs.next()) {
-				User user = new User();
-				user.setUname(rs.getString("Uname"));
-				user.setPassword(rs.getString("Password"));
-				user.setEmail(rs.getString("Email"));
-				user.setRegistration(rs.getDate("Registration"));
+				User users = new User();
+
+				users.setUname(rs.getString("uname"));
+				users.setFirstName(rs.getString("firstName"));
+				users.setLastName(rs.getString("uname"));
+				users.setPhone(rs.getString("phone"));
+				users.setEGN(rs.getString("EGN"));
+				users.setUname(rs.getString("uname"));
+				users.setPassword(rs.getString("password"));
+				users.setEmail(rs.getString("email"));
+				users.setRegistration(rs.getDate("registration"));
+
+				RoleDao roleDao = new RoleDao();
+				int role_id = rs.getInt("role_id");
+				Role role = roleDao.getRoleById(role_id);
+				users.setRole(role);
 				users.add(user);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return users;
+		return user;
 	}
 
 	public User getUserById(String user_Id) {
 		User user = new User();
 		try {
-			PreparedStatement preparedStatement = connection.prepareStatement("select * from users where Uname=?");
+			PreparedStatement preparedStatement = connection.prepareStatement("select * from user where uname=?");
 			preparedStatement.setString(1, user_Id);
 			ResultSet rs = preparedStatement.executeQuery();
 
 			if (rs.next()) {
-				user.setUname(rs.getString("Uname"));
-				user.setPassword(rs.getString("Password"));
-				user.setEmail(rs.getString("Email"));
-				user.setRegistration(rs.getDate("Registration"));
+				user.setUname(rs.getString("uname"));
+				user.setPassword(rs.getString("password"));
+				user.setEmail(rs.getString("email"));
+				user.setRegistration(rs.getDate("registration"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -4,63 +4,63 @@ use restaurant;
 
 CREATE TABLE tables (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    ChairCount INT NOT NULL
+    chairCount INT NOT NULL
 );
 
 CREATE TABLE orderState (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    State VARCHAR(50) NOT NULL
+    state VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE roles (
+CREATE TABLE role (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    Roles VARCHAR(20) NOT NULL
+    roleName VARCHAR(20) NOT NULL
 );
 
 
 
 CREATE TABLE menu (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    Name varchar(50) UNIQUE NOT NULL,
-    FoodType varchar(250) NOT NULL,
-    Description VARCHAR(250),
-    Price Double NOT NULL
+    name VARCHAR(50) UNIQUE NOT NULL,
+    foodType VARCHAR(250) NOT NULL,
+    description VARCHAR(250),
+    price DOUBLE NOT NULL
 );
 
-CREATE TABLE users (
+CREATE TABLE user (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    roles_id INT DEFAULT 01,
-    Uname VARCHAR(50) NOT NULL,
-    Password VARCHAR(100) NOT NULL,
-    FirstName VARCHAR(50) NOT NULL,
-    LastName VARCHAR(50) NOT NULL,
-    Phone INT UNIQUE,
+    role_id INT DEFAULT 01,
+    uname VARCHAR(50) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    firstName VARCHAR(50) NOT NULL,
+    lastName VARCHAR(50) NOT NULL,
+    phone INT UNIQUE,
     EGN INT NOT NULL UNIQUE,
-    Email VARCHAR(50) NOT NULL UNIQUE,
-    Registration DATETIME DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT FOREIGN KEY (roles_id)
-        REFERENCES roles (id)
+    email VARCHAR(50) NOT NULL UNIQUE,
+    registration DATETIME DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT FOREIGN KEY (role_id)
+        REFERENCES role(id)
 );
 
 CREATE TABLE orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    Tables_id INT NOT NULL,
-    Time TIME NOT NULL,
-    Date DATE NOT NULL,
+    table_id INT NOT NULL,
+    time TIME NOT NULL,
+    date DATE NOT NULL,
     user_id INT NOT NULL,
     orderState_id INT NOT NULL,
     CONSTRAINT FOREIGN KEY (user_id)
-        REFERENCES users (id),
+        REFERENCES user (id),
     CONSTRAINT FOREIGN KEY (orderState_id)
         REFERENCES orderState (id),
-    CONSTRAINT FOREIGN KEY (tables_id)
+    CONSTRAINT FOREIGN KEY (table_id)
         REFERENCES tables (id)
 );
 
 CREATE TABLE menu_orders (
-    id INT AUTO_INCREMENT PRIMARY KEY,
     menu_id INT NOT NULL,
     orders_id INT NOT NULL,
+    primary key (menu_id,orders_id),
     CONSTRAINT FOREIGN KEY (menu_id)
         REFERENCES menu (id),
     CONSTRAINT FOREIGN KEY (orders_id)
@@ -68,38 +68,38 @@ CREATE TABLE menu_orders (
 );
 
 
-insert into Roles(id,Roles)
+insert into role(id,roleName)
 values(01,'admin');
 
-insert into Roles(id,Roles)
+insert into role(id,roleName)
 values(02,'user');
 
-insert into Roles(id,Roles)
+insert into role(id,roleName)
 values(03,'cook');
 
-insert into Roles(id,Roles)
+insert into role(id,roleName)
 values(04,'waiter');
 
-insert into Orderstate(id,State)
+insert into orderstate(id,state)
 values(01,'onQueue');
 
-insert into Orderstate(id,State)
+insert into orderstate(id,state)
 values(02,'readyToGo');
 
-insert into Orderstate(id,State)
+insert into orderstate(id,state)
 values(03,'finished');
 
-insert into Tables(id,ChairCount)
+insert into tables(id,chairCount)
 values(01,4);
 
-insert into Tables(id,ChairCount)
+insert into tables(id,chairCount)
 values(02,5);
 
-insert into Tables(id,ChairCount)
+insert into tables(id,chairCount)
 values(03,4);
 
-insert into users(roles_id,Uname,FirstName,LastName,Phone,EGN,Email,Password)
+insert into user(role_id,uname,firstName,lastName,phone,EGN,email,password)
 values(01,'admin','petko','petkov','085296','0255852','asd@abv.bg','21232f297a57a5a743894a0e4a801fc3');
 
-insert into users(roles_id,Uname,FirstName,LastName,Phone,EGN,Email,Password)
+insert into user(role_id,uname,firstName,lastName,phone,EGN,email,password)
 values(02,'user','tom','stoyanov','085434296','034355852','asdddd@abv.bg','ee11cbb19052e40b07aac0ca060c23ee');
