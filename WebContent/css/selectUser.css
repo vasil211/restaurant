@@ -1,0 +1,79 @@
+body{
+    background-color: #acacac;
+    font-family: 'Titillium Web';
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    font-style:oblique;
+    font-weight: 10000;
+    text-align: center; 
+    color: #ffffff; 
+   
+    
+    
+}
+.header{
+    float: top;
+    width: 100%;
+    height: 80px;
+    margin: 0 0 10px 0;
+    background: linear-gradient(rgb(0,128,0),rgb(102, 255, 179));
+}
+.header h1{
+    
+    line-height: 70px;
+    font-size:3.8em;
+    text-align: center; 
+    color: #ffffff; 
+    font-weight: 300; 
+    margin: 0 0 40px;
+}
+.page{
+    width: 80%;
+    margin: 0 auto;
+    padding: 80px; 
+    max-width: 900px; 
+    margin: 40px auto;
+    border-radius: 6px;
+    list-style:none; 
+    padding: 40px;
+    text-align: center;
+}
+
+.cook{
+    float: left;
+    width: 40px;
+    margin: 0 auto;
+    padding: 80px;
+    border-radius: 6px;
+    text-align: center;
+    height: 30px;
+}
+.waiter{
+    float:right;
+    width: 40px;
+    margin: 0 auto;
+    padding: 80px;
+    border-radius: 6px;
+    text-align: center;
+    height: 30px;
+}
+
+.user{
+    float:left;
+    width: 40px;
+    margin: 0 auto;
+    padding: 80px;
+    border-radius: 6px;
+    text-align: center;
+    height: 30px;
+}
+.admin{
+    float:right;
+    width: 40px;
+    margin: 0 auto;
+    padding: 80px;
+    border-radius: 6px;
+    text-align: center;
+    height: 30px;
+}

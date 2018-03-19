@@ -30,13 +30,14 @@ public class Dashboard extends HttpServlet {
 			// !!
 			int roleId = (int) request.getSession().getAttribute("role_Id");
 			if (roleId == 1) {
-				RequestDispatcher view = request.getRequestDispatcher("/listuser.jsp");
-				List<User> user = dao.getAllUsers();
-
-				request.setAttribute("user", user);
-				for (User temp : user) {
-					System.out.println(temp.getUname());
-				}
+				RequestDispatcher view = request.getRequestDispatcher("/adminFirstPage.jsp");
+				request.setAttribute("userRole", request.getSession().getAttribute("role_Id"));
+//				List<User> user = dao.getAllUsers();
+//
+//				request.setAttribute("user", user);
+//				for (User temp : user) {
+//					System.out.println(temp.getUname());
+//				}
 				view.forward(request, response);
 			} else if (roleId == 2) {
 

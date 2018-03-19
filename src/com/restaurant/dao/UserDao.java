@@ -70,7 +70,7 @@ public class UserDao {
 			if (rs.next()) {
 				User user = new User();
 				user.setUname(rs.getString("uname"));
-//
+				//
 				RoleDao roleDao = new RoleDao();
 				int role_id = rs.getInt("role_id");
 				Role role = roleDao.getRoleById(role_id);
@@ -147,36 +147,125 @@ public class UserDao {
 			e.printStackTrace();
 		}
 	}
-
-	public List<User> getAllUsers() {
-		List<User> user = new ArrayList<User>();
+	public List<User> getAllAdmins() {
+		List<User> users = new ArrayList<User>();
 		try {
 			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery("select * from user "); // where role_id = 2
+			ResultSet rs = statement.executeQuery("select * from user where role_id = 1 ");
 			while (rs.next()) {
-				User users = new User();
+				User user = new User();
 
-				users.setUname(rs.getString("uname"));
-				users.setFirstName(rs.getString("firstName"));
-				users.setLastName(rs.getString("uname"));
-				users.setPhone(rs.getString("phone"));
-				users.setEGN(rs.getString("EGN"));
-				users.setUname(rs.getString("uname"));
-				users.setPassword(rs.getString("password"));
-				users.setEmail(rs.getString("email"));
-				users.setRegistration(rs.getDate("registration"));
+				user.setUname(rs.getString("uname"));
+				user.setFirstName(rs.getString("firstName"));
+				user.setLastName(rs.getString("lastName"));
+				user.setPhone(rs.getString("phone"));
+				user.setEGN(rs.getString("EGN"));
+				user.setEmail(rs.getString("email"));
+				user.setRegistration(rs.getDate("registration"));
 
 				RoleDao roleDao = new RoleDao();
 				int role_id = rs.getInt("role_id");
 				Role role = roleDao.getRoleById(role_id);
-				users.setRole(role);
+				user.setRole(role);
 				users.add(user);
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return user;
+		return users;
+	}
+	
+
+	public List<User> getAllUsers() {
+		List<User> users = new ArrayList<User>();
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("select * from user where role_id = 2 ");
+			while (rs.next()) {
+				User user = new User();
+
+				user.setUname(rs.getString("uname"));
+				user.setFirstName(rs.getString("firstName"));
+				user.setLastName(rs.getString("lastName"));
+				user.setPhone(rs.getString("phone"));
+				user.setEGN(rs.getString("EGN"));
+				user.setEmail(rs.getString("email"));
+				user.setRegistration(rs.getDate("registration"));
+
+				RoleDao roleDao = new RoleDao();
+				int role_id = rs.getInt("role_id");
+				Role role = roleDao.getRoleById(role_id);
+				user.setRole(role);
+				users.add(user);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return users;
+	}
+
+	public List<User> getAllCooks() {
+		List<User> users = new ArrayList<User>();
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("select * from user where role_id = 3 ");
+			while (rs.next()) {
+				User user = new User();
+
+				user.setUname(rs.getString("uname"));
+				user.setFirstName(rs.getString("firstName"));
+				user.setLastName(rs.getString("lastName"));
+				user.setPhone(rs.getString("phone"));
+				user.setEGN(rs.getString("EGN"));
+				user.setEmail(rs.getString("email"));
+				user.setRegistration(rs.getDate("registration"));
+
+				RoleDao roleDao = new RoleDao();
+				int role_id = rs.getInt("role_id");
+				Role role = roleDao.getRoleById(role_id);
+				user.setRole(role);
+				users.add(user);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return users;
+	}
+
+	public List<User> getAllWaiters() {
+		List<User> users = new ArrayList<User>();
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("select * from user where role_id = 4 ");
+			while (rs.next()) {
+				User user = new User();
+
+				user.setUname(rs.getString("uname"));
+				user.setFirstName(rs.getString("firstName"));
+				user.setLastName(rs.getString("lastName"));
+				user.setPhone(rs.getString("phone"));
+				user.setEGN(rs.getString("EGN"));
+				user.setEmail(rs.getString("email"));
+				user.setRegistration(rs.getDate("registration"));
+
+				RoleDao roleDao = new RoleDao();
+				int role_id = rs.getInt("role_id");
+				Role role = roleDao.getRoleById(role_id);
+				user.setRole(role);
+				users.add(user);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return users;
 	}
 
 	public User getUserById(String user_Id) {

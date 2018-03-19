@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>All users</title>
+<title>All Users</title>
 <link
 	href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600'
 	rel='stylesheet' type='text/css'>
@@ -20,7 +20,6 @@
 		<table border=1>
 			<thead>
 				<tr>
-					<th>Roles_id</th>
 					<th>User Name</th>
 					<th>FirstName</th>
 					<th>LastName</th>
@@ -34,7 +33,6 @@
 			<tbody>
 				<c:forEach items="${users}" var="user">
 					<tr>
-						<td><c:out value="${user.getRoles_id()}" /></td>
 						<td><c:out value="${user.getUname()}" /></td>
 						<td><c:out value="${user.getFirstName()}" /></td>
 						<td><c:out value="${user.getLastName()}" /></td>

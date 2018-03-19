@@ -39,7 +39,7 @@ CREATE TABLE user (
     email VARCHAR(50) NOT NULL UNIQUE,
     registration DATETIME DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT FOREIGN KEY (role_id)
-        REFERENCES role(id)
+        REFERENCES role (id)
 );
 
 CREATE TABLE orders (
@@ -60,7 +60,7 @@ CREATE TABLE orders (
 CREATE TABLE menu_orders (
     menu_id INT NOT NULL,
     orders_id INT NOT NULL,
-    primary key (menu_id,orders_id),
+    PRIMARY KEY (menu_id , orders_id),
     CONSTRAINT FOREIGN KEY (menu_id)
         REFERENCES menu (id),
     CONSTRAINT FOREIGN KEY (orders_id)
@@ -99,7 +99,13 @@ insert into tables(id,chairCount)
 values(03,4);
 
 insert into user(role_id,uname,firstName,lastName,phone,EGN,email,password)
-values(01,'admin','petko','petkov','085296','0255852','asd@abv.bg','21232f297a57a5a743894a0e4a801fc3');
+values(01,'admin','stoqn','petkov','08545296','025585234','asdfd@abv.bg','21232f297a57a5a743894a0e4a801fc3');
 
 insert into user(role_id,uname,firstName,lastName,phone,EGN,email,password)
-values(02,'user','tom','stoyanov','085434296','034355852','asdddd@abv.bg','ee11cbb19052e40b07aac0ca060c23ee');
+values(02,'user','stoqn','stoyanov','0854324296','034893558','asddddd@abv.bg','ee11cbb19052e40b07aac0ca060c23ee');
+
+insert into user(role_id,uname,firstName,lastName,phone,EGN,email,password)
+values(03,'cook','stoqn','stoyanov','0854342936','034355585','asdddad@abv.bg','e3e90fd6d2a7c4661a1a3acf2f60bc6d');
+
+insert into user(role_id,uname,firstName,lastName,phone,EGN,email,password)
+values(04,'waiter','stoqn','stoyanov','0854234296','034353858','asdnd@abv.bg','f64cff138020a2060a9817272f563b3c');

@@ -13,7 +13,8 @@ import com.restaurant.model.User;
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static String INSERT_OR_EDIT = "/user.jsp";
-	private static String LIST_USER = "/listuser.jsp";
+	private static String LIST_USER = "/userList.jsp";
+	
 	private UserDao dao;
 
 	public UserController() {
