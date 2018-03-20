@@ -6,6 +6,9 @@ import java.util.*;
 
 import com.restaurant.model.Role;
 import javax.xml.bind.DatatypeConverter;
+import javax.xml.ws.Response;
+
+import org.apache.catalina.util.ExtensionValidator;
 
 import com.restaurant.model.User;
 import com.restaurant.util.Database;
@@ -19,30 +22,17 @@ public class UserDao {
 	}
 
 	// public String validEmail(String email) {
-	// try {
 	//
-	// String emailCh = "^[A-Za-z0-9-]+(\\[A-Za-z0-9])*@" +
-	// "[A-Za-z0-9-]+(\\.[A-Za-z0-9])";
+	// boolean valid = ExtensionValidator.getInstance().isValid(email);
 	//
-	// if (email.equalsIgnoreCase(emailCh)) {
-	// String chEmail = email;
-	// System.out.println("email ch");
-	// return chEmail;
-	//
-	// } else {
-	//
-	// System.out.println("Wrong Email");
+	// if (valid ) {
+	// return email;
+	// }
+	// else {
 	//
 	// return null;
-	//
 	// }
-
-	// } catch (Exception ex) {
-	// System.out.println("Error in check() -->" + ex.getMessage());
-	// }
-	// System.out.println("email wrong");
-	// return email;
-	//
+	// System.out.println(valid);
 	// }
 
 	public void checkUser(User user) {
@@ -147,11 +137,12 @@ public class UserDao {
 			e.printStackTrace();
 		}
 	}
+
 	public List<User> getAllAdmins() {
 		List<User> users = new ArrayList<User>();
 		try {
 			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery("select * from user where role_id = 1 ");
+			ResultSet rs = statement.executeQuery("SELECT * FROM restaurant.user WHERE role_id = 1");
 			while (rs.next()) {
 				User user = new User();
 
@@ -176,13 +167,12 @@ public class UserDao {
 
 		return users;
 	}
-	
 
 	public List<User> getAllUsers() {
 		List<User> users = new ArrayList<User>();
 		try {
 			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery("select * from user where role_id = 2 ");
+			ResultSet rs = statement.executeQuery("SELECT * FROM restaurant.user WHERE role_id = 2");
 			while (rs.next()) {
 				User user = new User();
 
@@ -212,7 +202,7 @@ public class UserDao {
 		List<User> users = new ArrayList<User>();
 		try {
 			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery("select * from user where role_id = 3 ");
+			ResultSet rs = statement.executeQuery("SELECT * FROM restaurant.user WHERE role_id = 3");
 			while (rs.next()) {
 				User user = new User();
 
@@ -242,7 +232,7 @@ public class UserDao {
 		List<User> users = new ArrayList<User>();
 		try {
 			Statement statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery("select * from user where role_id = 4 ");
+			ResultSet rs = statement.executeQuery("SELECT * FROM restaurant.user WHERE role_id = 4");
 			while (rs.next()) {
 				User user = new User();
 

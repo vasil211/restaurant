@@ -38,7 +38,7 @@ public class Dashboard extends HttpServlet {
 //				for (User temp : user) {
 //					System.out.println(temp.getUname());
 //				}
-				view.forward(request, response);
+//				view.forward(request, response);
 			} else if (roleId == 2) {
 
 				RequestDispatcher view = request.getRequestDispatcher("/menu.jsp");

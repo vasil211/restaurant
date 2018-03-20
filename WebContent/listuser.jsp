@@ -34,7 +34,7 @@
 			<tbody>
 				<c:forEach items="${users}" var="user">
 					<tr>
-						<td><c:out value="${user.getRoles_id()}" /></td>
+						<td><c:out value="${user.getRole_id()}" /></td>
 						<td><c:out value="${user.getUname()}" /></td>
 						<td><c:out value="${user.getFirstName()}" /></td>
 						<td><c:out value="${user.getLastName()}" /></td>

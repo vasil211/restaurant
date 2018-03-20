@@ -26,7 +26,7 @@
 					<th>Phone</th>
 					<th>EGN</th>
 					<th>Email</th>
-					<th>Registration</th>
+					<th>Registration date</th>
 
 				</tr>
 			</thead>

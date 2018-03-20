@@ -1,19 +1,18 @@
 package com.restaurant.controller;
 
 import java.io.IOException;
-import java.security.MessageDigest;
+
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.DatatypeConverter;
+
 
 import com.restaurant.dao.UserDao;
 import com.restaurant.model.User;
 
-import javax.mail.*;
 
 public class RegistrationController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -42,7 +41,8 @@ public class RegistrationController extends HttpServlet {
 		User user = new User();
 		user.setFirstName(request.getParameter("firstName"));
 		user.setLastName(request.getParameter("lastName"));
-		user.setEmail(request.getParameter("email"));
+		user.setEmail(request.getParameter("Email"));
+//		user.setEmail(chEmail);
 		user.setPassword(hashedPass);
 		user.setUname(request.getParameter("uname"));
 		user.setPhone(request.getParameter("phone"));

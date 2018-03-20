@@ -108,4 +108,4 @@ insert into user(role_id,uname,firstName,lastName,phone,EGN,email,password)
 values(03,'cook','stoqn','stoyanov','0854342936','034355585','asdddad@abv.bg','e3e90fd6d2a7c4661a1a3acf2f60bc6d');
 
 insert into user(role_id,uname,firstName,lastName,phone,EGN,email,password)
-values(04,'waiter','stoqn','stoyanov','0854234296','034353858','asdnd@abv.bg','f64cff138020a2060a9817272f563b3c');
+values(04,'waiter','stoqn','stoyanov','0854234296','03435385','asdnd@abv.bg','f64cff138020a2060a9817272f563b3c');
