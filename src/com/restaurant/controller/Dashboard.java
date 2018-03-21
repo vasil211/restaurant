@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.User;
+
 import com.restaurant.dao.UserDao;
-import com.restaurant.model.User;
+
 
 @WebServlet("/Dashboard")
 public class Dashboard extends HttpServlet {
@@ -22,7 +24,6 @@ public class Dashboard extends HttpServlet {
 		super();
 		dao = new UserDao();
 	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// SESIQ!!!!!
@@ -32,13 +33,13 @@ public class Dashboard extends HttpServlet {
 			if (roleId == 1) {
 				RequestDispatcher view = request.getRequestDispatcher("/adminFirstPage.jsp");
 				request.setAttribute("userRole", request.getSession().getAttribute("role_Id"));
-//				List<User> user = dao.getAllUsers();
+//				List<com.restaurant.model.User> user = dao.getAllUsers();
 //
 //				request.setAttribute("user", user);
-//				for (User temp : user) {
+//				for (com.restaurant.model.User temp : user) {
 //					System.out.println(temp.getUname());
 //				}
-//				view.forward(request, response);
+				view.forward(request, response);
 			} else if (roleId == 2) {
 
 				RequestDispatcher view = request.getRequestDispatcher("/menu.jsp");

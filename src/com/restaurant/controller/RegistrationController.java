@@ -35,14 +35,14 @@ public class RegistrationController extends HttpServlet {
 
 		String pass = request.getParameter("password");
 		String hashedPass = dao.hash(pass);
-//		String email = request.getParameter("Email");
-//		String chEmail = dao.validEmail(email);
+		String email = request.getParameter("Email");
+		String chEmail = dao.validEmail(email);
 
 		User user = new User();
 		user.setFirstName(request.getParameter("firstName"));
 		user.setLastName(request.getParameter("lastName"));
-		user.setEmail(request.getParameter("Email"));
-//		user.setEmail(chEmail);
+//		user.setEmail(request.getParameter("Email"));
+		user.setEmail(chEmail);
 		user.setPassword(hashedPass);
 		user.setUname(request.getParameter("uname"));
 		user.setPhone(request.getParameter("phone"));
@@ -56,7 +56,7 @@ public class RegistrationController extends HttpServlet {
 		} else {
 			System.out.println("failed to insert the data");
 			String registrationError = "Registration Error";
-			response.sendRedirect(request.getContextPath() + "/index.jsp?error=registrationError");
+			response.sendRedirect(request.getContextPath() + "/index.jsp?error=Registration Error");
 		}
 
 	}

@@ -6,9 +6,8 @@ import java.util.*;
 
 import com.restaurant.model.Role;
 import javax.xml.bind.DatatypeConverter;
-import javax.xml.ws.Response;
 
-import org.apache.catalina.util.ExtensionValidator;
+import org.apache.commons.validator.routines.EmailValidator;
 
 import com.restaurant.model.User;
 import com.restaurant.util.Database;
@@ -21,19 +20,17 @@ public class UserDao {
 		connection = Database.getConnection();
 	}
 
-	// public String validEmail(String email) {
-	//
-	// boolean valid = ExtensionValidator.getInstance().isValid(email);
-	//
-	// if (valid ) {
-	// return email;
-	// }
-	// else {
-	//
-	// return null;
-	// }
-	// System.out.println(valid);
-	// }
+	public String validEmail(String email) {
+
+		boolean valid = EmailValidator.getInstance().isValid(email);
+
+		if (valid) {
+			return email;
+		} else {
+
+			return null;
+		}
+	}
 
 	public void checkUser(User user) {
 		try {
