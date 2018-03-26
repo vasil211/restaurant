@@ -35,15 +35,17 @@ public class RegistrationController extends HttpServlet {
 
 		String pass = request.getParameter("password");
 		String hashedPass = dao.hash(pass);
-		String email = request.getParameter("Email");
+		String email = request.getParameter("email");
 		String chEmail = dao.validEmail(email);
+		String unameCh = request.getParameter("uname");
+		String validUname = dao.UnameValidator(validedUname);
 
 		User user = new User();
 		user.setFirstName(request.getParameter("firstName"));
 		user.setLastName(request.getParameter("lastName"));
 		user.setEmail(chEmail);
+		user.setUname(validUname);
 		user.setPassword(hashedPass);
-		user.setUname(request.getParameter("uname"));
 		user.setPhone(request.getParameter("phone"));
 		user.setEGN(request.getParameter("EGN"));
 		boolean added = dao.addUser(user);
@@ -59,5 +61,9 @@ public class RegistrationController extends HttpServlet {
 		}
 
 	}
+	
+	
+	
+	
 
 }
