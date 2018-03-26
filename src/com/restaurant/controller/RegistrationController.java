@@ -41,7 +41,6 @@ public class RegistrationController extends HttpServlet {
 		User user = new User();
 		user.setFirstName(request.getParameter("firstName"));
 		user.setLastName(request.getParameter("lastName"));
-//		user.setEmail(request.getParameter("Email"));
 		user.setEmail(chEmail);
 		user.setPassword(hashedPass);
 		user.setUname(request.getParameter("uname"));

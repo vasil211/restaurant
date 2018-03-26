@@ -4,8 +4,10 @@ import java.security.MessageDigest;
 import java.sql.*;
 import java.util.*;
 
-import com.restaurant.model.Role;
 import javax.xml.bind.DatatypeConverter;
+
+import com.restaurant.model.Role;
+
 
 import org.apache.commons.validator.routines.EmailValidator;
 
