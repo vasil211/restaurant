@@ -31,7 +31,7 @@ public class Dashboard extends HttpServlet {
 			// !!
 			int roleId = (int) request.getSession().getAttribute("role_Id");
 			if (roleId == 1) {
-				RequestDispatcher view = request.getRequestDispatcher("/AdminFirstPage.java");
+				RequestDispatcher view = request.getRequestDispatcher("/adminFirstPage.jsp");
 				request.setAttribute("userRole", request.getSession().getAttribute("role_Id"));
 //				List<com.restaurant.model.User> user = dao.getAllUsers();
 //

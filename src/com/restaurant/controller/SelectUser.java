@@ -44,7 +44,8 @@ public class SelectUser extends HttpServlet {
 			String user_Id = request.getParameter("user_Id");
 			System.out.println(user_Id);
 			List<com.restaurant.model.User> user = dao.getAllUsers();
-			request.setAttribute("user", user);
+			forward = LIST_ALL_USERS;
+			request.setAttribute("users", dao.getAllUsers());
 			for (com.restaurant.model.User temp : user) {
 				System.out.println(temp.getUname());
 			}

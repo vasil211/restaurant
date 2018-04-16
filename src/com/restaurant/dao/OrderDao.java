@@ -3,6 +3,7 @@ package com.restaurant.dao;
 import java.sql.*;
 import java.util.*;
 
+import com.mysql.jdbc.Connection;
 import com.restaurant.model.Order;
 import com.restaurant.model.Role;
 import com.restaurant.model.User;
