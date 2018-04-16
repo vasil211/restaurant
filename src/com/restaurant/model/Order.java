@@ -4,18 +4,18 @@ import java.sql.Date;
 import java.sql.Time;
 
 public class Order {
-	private Table tables;
+	private Table table;
 	private Time time;
 	private Date date;
 	private User user;
 	private OrderState orderState;
 
-	public Table getTables() {
-		return tables;
+	public Table getTable() {
+		return table;
 	}
 
-	public void setTables(Table tables) {
-		this.tables = tables;
+	public void setTable(Table tables) {
+		this.table = tables;
 	}
 
 	public Time getTime() {

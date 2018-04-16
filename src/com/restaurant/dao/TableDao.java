@@ -8,9 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.restaurant.model.Role;
 import com.restaurant.model.Table;
-import com.restaurant.model.User;
+
 import com.restaurant.util.Database;
 
 public class TableDao {
