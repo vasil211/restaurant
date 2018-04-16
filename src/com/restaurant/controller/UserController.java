@@ -1,6 +1,8 @@
 package com.restaurant.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +28,7 @@ public class UserController extends HttpServlet {
 			throws ServletException, IOException {
 		String forward = "";
 		String action = request.getParameter("action");
-
+       System.out.println(action);
 		if (action.equalsIgnoreCase("delete")) {
 			String user_Id = request.getParameter("user_Id");
 			System.out.println(user_Id);
@@ -39,8 +41,14 @@ public class UserController extends HttpServlet {
 			User user = dao.getUserById(user_Id);
 			request.setAttribute("user", user);
 		} else if (action.equalsIgnoreCase("listUser")) {
+			List<User> users = dao.getAllUsers();
+			int f = 0;
+			for(int i= 0; i >users.size();i++) {
+				f++;
+			}
+			System.out.println(f);
+			request.setAttribute("users",users);
 			forward = LIST_USER;
-			request.setAttribute("users", dao.getAllUsers());
 		} else {
 			forward = INSERT_OR_EDIT;
 		}
@@ -58,13 +66,14 @@ public class UserController extends HttpServlet {
 		User user = dao.checkIfUserExist(uname, hashedPass);
 		if (user != null) {
 			request.getSession().setAttribute("isLogged", true);
-			request.getSession().setAttribute("username", user.getUname());
+			request.getSession().setAttribute("Uname", user.getUname());
 			
 			request.getSession().setAttribute("role_Id", user.getRole().getId());
 			
 			response.sendRedirect(request.getContextPath() + "/dashboard");
 		} else {
-			response.sendRedirect(request.getContextPath() + "/index.jsp?error=wrongNameOrPass");
+			String  wrongNameOrPass = "Wrong Name Or Pass";
+			response.sendRedirect(request.getContextPath() + "/user.jsp?error=" + wrongNameOrPass);
 		}
 
 	}

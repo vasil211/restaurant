@@ -196,6 +196,14 @@ textarea {
 	border-left: 4px solid;
 	border-radius: 4px;
 }
+.success{
+	margin: 20px 0 0px;
+	padding: 15px;
+	color: #00ffff;
+	font-size: 14px;
+	border-left: 4px solid;
+	border-radius: 4px;
+}
 
 .forgot {
 	margin-top: -20px;

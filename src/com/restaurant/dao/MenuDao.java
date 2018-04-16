@@ -1,13 +1,9 @@
 package com.restaurant.dao;
 
-import java.security.MessageDigest;
 import java.sql.*;
 import java.util.*;
-
 import com.restaurant.model.Menu;
 import com.restaurant.util.Database;
-
-
 
 public class MenuDao {
 	private Connection connection;

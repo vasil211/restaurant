@@ -8,7 +8,8 @@
 		<h1>Select type of user</h1>
 		<link rel="stylesheet" href="css/selectUser.css">
 	</div>
-	<div class="page">
+	
+	<div class="page" action="SelectUser" method="Get" >
 		<div class="cook">
 			<h1>
 				<a href="cookList.jsp">Cook</a>

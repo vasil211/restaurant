@@ -27,6 +27,11 @@
 				<%if(error != null){
 				out.print("<p class='error'>" + error + "</p>");   
 			} %>
+			<%String success=request.getParameter("success"); %>
+				<%if(success != null){
+				out.print("<p class='success'>" + success + "</p>");   
+			} %>
+			
 
 				<form action="UserController" method="post">
 
@@ -58,24 +63,24 @@
 					<div class="top-row">
 						<div class="field-wrap">
 							<label> First Name<span class="req">*</span>
-							</label> <input type="text" name="FirstName" required autocomplete="off" />
+							</label> <input type="text" name="firstName" required autocomplete="on" />
 						</div>
 
 						<div class="field-wrap">
 							<label> Last Name<span class="req">*</span>
-							</label> <input type="text" name="LastName" required autocomplete="off" />
+							</label> <input type="text" name="lastName" required autocomplete="on" />
 						</div>
 					</div>
 
 					<div class="field-wrap">
 						<label> Username<span class="req">*</span>
-						</label> <input type="text" name="Uname" required autocomplete="off" />
+						</label> <input type="text" name="uname" required autocomplete="on" />
 					</div>
 			
 			<div class="field-wrap">
 				<label> Phone Number<span class="req">*</span>
-				</label> <input type="text" name="Phone" min="0" required
-					autocomplete="off">
+				</label> <input type="text" name="phone" min="0" required
+					autocomplete="on">
 			</div>
 			<div class="field-wrap">
 				<label> EGN<span class="req">*</span>
@@ -85,12 +90,12 @@
 
 			<div class="field-wrap">
 				<label> Email Address<span class="req">*</span>
-				</label> <input type="email" name="Email" required autocomplete="off" />
+				</label> <input type="email" name="email" required autocomplete="on" />
 			</div>
 
 			<div class="field-wrap">
 				<label> Set A Password<span class="req">*</span>
-				</label> <input type="password" name="Password" required autocomplete="off" />
+				</label> <input type="password" name="password" required autocomplete="on" />
 			</div>
 
 			<button type="submit" class="button button-block">Get

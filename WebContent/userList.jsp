@@ -17,6 +17,7 @@
 </head>
 <body>
 	<form action="UserController" method="Get">
+	
 		<table border=1>
 			<thead>
 				<tr>
@@ -31,8 +32,9 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${users}" var="user">
-					<tr>
+				<c:forEach items="${users}" var="user"> 
+				
+					<tr action="SelectUser" method="Get">
 						<td><c:out value="${user.getUname()}" /></td>
 						<td><c:out value="${user.getFirstName()}" /></td>
 						<td><c:out value="${user.getLastName()}" /></td>

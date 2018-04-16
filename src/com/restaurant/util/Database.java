@@ -7,7 +7,7 @@ public class Database {
               Class.forName("com.mysql.jdbc.Driver");
               Connection con = DriverManager.getConnection
                       ("jdbc:mysql://localhost:3306/restaurant",
-                      "root", "sql123");
+                      "root", "2211");
               return con;
           }
           catch(Exception ex) {

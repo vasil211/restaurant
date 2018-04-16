@@ -4,10 +4,8 @@ import java.security.MessageDigest;
 import java.sql.*;
 import java.util.*;
 
-import javax.xml.bind.DatatypeConverter;
-
 import com.restaurant.model.Role;
-
+import javax.xml.bind.DatatypeConverter;
 
 import org.apache.commons.validator.routines.EmailValidator;
 
@@ -50,10 +48,10 @@ public class UserDao {
 		}
 	}
 
-	public User checkIfUserExist(String name, String pass) {
+	public User checkIfUserExist(String uname, String pass) {
 		try {
 			PreparedStatement ps = connection.prepareStatement("select * from user where uname = ? and password = ?");
-			ps.setString(1, name);
+			ps.setString(1, uname);
 			ps.setString(2, pass);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
@@ -277,33 +275,49 @@ public class UserDao {
 		return user;
 	}
 	
-	//Checking if user exist
-	public boolean UnameValidator(String uname) {
-		boolean usernameExists = false;
-		
-		try {
-			PreparedStatement st = connection.prepareStatement("select * from user order by uname desc");
-			ResultSet r1 = st.executeQuery();
-			String usernameCounter;
-		if(r1.next()) {
-			usernameCounter =  r1.getString("uname");
-			if(usernameCounter == uname) {
-				System.out.println("It already exists!");
-				usernameExists = true;
-			}
-		}
-		}
-		catch (SQLException e) 
-	     {
-	        System.out.println("SQL Exception: "+ e.toString());
-	     } 
-	    /* catch (ClassNotFoundException cE) 
-	     {
-	        System.out.println("Class Not Found Exception: "+ cE.toString());
-	     } */ //na men tozi exception sveti v nyakakwa greshka, za twa e w komentar
-
-	 return usernameExists;
-		
-		}
-		
+//	public boolean UnameValidator(String uname) {
+//		try {
+//			PreparedStatement st = connection.prepareStatement("select * from user where uname = ?");
+//			ps.setString(1, .getUname());
+//			ResultSet r1 = st.executeQuery();
+//			String usernameCounter;
+//		if(r1.next()) {
+//			usernameCounter =  r1.getString("uname");
+//			if(usernameCounter == uname) {
+//				
+//				System.out.println("It already exists!");
+//				usernameExists = true;
+//			}
+//		}
+//		}
+//		catch (SQLException e) 
+//	     {
+//	        System.out.println("SQL Exception: "+ e.toString());
+//	     } 
+//	  
+//	 return usernameExists;
+//		
+//		}
+//	public boolean UnameValidator(String uname) {
+//		
+//			try {
+//				PreparedStatement ps = connection.prepareStatement("select * from user where uname = ?");
+//				ps.setString(1, uname);
+//				ResultSet rs = ps.executeQuery();
+//				if (true) {
+//					
+//					return uname;
+//				} else {
+//					return null;
+//				}
+//			} catch (Exception ex) {
+//				ex.printStackTrace();
+//				return null;
+//			}
+//		}
+//	
+//	}
+//	
+	
 	}
+	
