@@ -45,7 +45,9 @@ CREATE TABLE user (
 CREATE TABLE orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
     table_id INT NOT NULL,
-    time TIME NOT NULL,
+    timeOfOrder TIME NOT NULL,
+    timeOfCook Time null,
+    timeOfPaymet Time null,
     date DATE NOT NULL,
     user_id INT NOT NULL,
     orderState_id INT NOT NULL,

@@ -8,18 +8,18 @@
 		<h1>Select type of user</h1>
 		<link rel="stylesheet" href="css/selectUser.css">
 	</div>
-	
-	<div class="page" action="SelectUser" method="Get" >
+	<form action="SelectUser" method="Get">
+	<div class="page" >
 		<div class="cook">
 			<h1>
-				<a href="cookList.jsp">Cook</a>
+			<button type="submit" value="cook">Cook</button>
 			</h1>
 			<br>
 
 		</div>
 		<div class="waiter">
 			<h1>
-				<a href="waiterList.jsp">Waiter</a>
+			<button type="submit" value="waiter">Waiter</button>
 			</h1>
 			<br>
 
@@ -27,7 +27,9 @@
 
 		<div class="user">
 			<h1>
-				<a href="userList.jsp">User</a>
+			<button type="submit" value="user">User</button>
+		<!--  	 <input type="button" name="userList" value="user">User
+				<a href="userList.jsp" value="user">User</a> -->
 			</h1>
 			<br>
 
@@ -37,13 +39,13 @@
 
 		<div class="admin">
 			<h1>
-				<a href="adminList.jsp">Admin</a>
+			<button type="submit" value="admin">Admin</button>
 			</h1>
 			<br>
 
 		</div>
 
 	</div>
-
+</form>
 </body>
 </html>

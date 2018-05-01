@@ -80,11 +80,11 @@ public class TableDao {
 		return tables;
 	}
 
-	public Table getTableById(String table_Id) {
+	public Table getTableById(int table_Id) {
 		Table table = new Table();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement("select * from tables where tables.id=?");
-			preparedStatement.setString(1, table_Id);
+			preparedStatement.setInt(1, table_Id);
 			ResultSet rs = preparedStatement.executeQuery();
 
 			if (rs.next()) {

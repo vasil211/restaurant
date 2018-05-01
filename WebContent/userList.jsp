@@ -28,7 +28,7 @@
 					<th>EGN</th>
 					<th>Email</th>
 					<th>Registration date</th>
-
+ 
 				</tr>
 			</thead>
 			<tbody>

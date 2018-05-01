@@ -12,6 +12,23 @@ public class User {
 	private String egn;
 	private Role role;
 	private Date registration;
+	private int id;
+
+	public String getEgn() {
+		return egn;
+	}
+
+	public void setEgn(String egn) {
+		this.egn = egn;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getFirstName() {
 
@@ -100,6 +117,5 @@ public class User {
 	public void setRegistration(Date registration) {
 		this.registration = registration;
 	}
-
 
 }

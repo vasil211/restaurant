@@ -4,9 +4,9 @@ import java.security.MessageDigest;
 import java.sql.*;
 import java.util.*;
 
-import com.restaurant.model.Role;
 import javax.xml.bind.DatatypeConverter;
 
+import com.restaurant.model.Role;
 import org.apache.commons.validator.routines.EmailValidator;
 
 import com.restaurant.model.User;
@@ -255,18 +255,17 @@ public class UserDao {
 		return users;
 	}
 
-	public User getUserById(String user_Id) {
-		User user = new User();
+	public User getUserById(int user_id) {
+		User user = null;
 		try {
-			PreparedStatement preparedStatement = connection.prepareStatement("select * from user where uname=?");
-			preparedStatement.setString(1, user_Id);
+			PreparedStatement preparedStatement = connection.prepareStatement("select * from user where id=?");
+			preparedStatement.setInt(1, user_id);
 			ResultSet rs = preparedStatement.executeQuery();
 
 			if (rs.next()) {
+				user = new User();
 				user.setUname(rs.getString("uname"));
 				user.setPassword(rs.getString("password"));
-				user.setEmail(rs.getString("email"));
-				user.setRegistration(rs.getDate("registration"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -274,50 +273,51 @@ public class UserDao {
 
 		return user;
 	}
-	
-//	public boolean UnameValidator(String uname) {
-//		try {
-//			PreparedStatement st = connection.prepareStatement("select * from user where uname = ?");
-//			ps.setString(1, .getUname());
-//			ResultSet r1 = st.executeQuery();
-//			String usernameCounter;
-//		if(r1.next()) {
-//			usernameCounter =  r1.getString("uname");
-//			if(usernameCounter == uname) {
-//				
-//				System.out.println("It already exists!");
-//				usernameExists = true;
-//			}
-//		}
-//		}
-//		catch (SQLException e) 
-//	     {
-//	        System.out.println("SQL Exception: "+ e.toString());
-//	     } 
-//	  
-//	 return usernameExists;
-//		
-//		}
-//	public boolean UnameValidator(String uname) {
-//		
-//			try {
-//				PreparedStatement ps = connection.prepareStatement("select * from user where uname = ?");
-//				ps.setString(1, uname);
-//				ResultSet rs = ps.executeQuery();
-//				if (true) {
-//					
-//					return uname;
-//				} else {
-//					return null;
-//				}
-//			} catch (Exception ex) {
-//				ex.printStackTrace();
-//				return null;
-//			}
-//		}
-//	
-//	}
-//	
-	
-	}
-	
+
+	// public boolean UnameValidator(String uname) {
+	// try {
+	// PreparedStatement st = connection.prepareStatement("select * from user where
+	// uname = ?");
+	// ps.setString(1, .getUname());
+	// ResultSet r1 = st.executeQuery();
+	// String usernameCounter;
+	// if(r1.next()) {
+	// usernameCounter = r1.getString("uname");
+	// if(usernameCounter == uname) {
+	//
+	// System.out.println("It already exists!");
+	// usernameExists = true;
+	// }
+	// }
+	// }
+	// catch (SQLException e)
+	// {
+	// System.out.println("SQL Exception: "+ e.toString());
+	// }
+	//
+	// return usernameExists;
+	//
+	// }
+	// public boolean UnameValidator(String uname) {
+	//
+	// try {
+	// PreparedStatement ps = connection.prepareStatement("select * from user where
+	// uname = ?");
+	// ps.setString(1, uname);
+	// ResultSet rs = ps.executeQuery();
+	// if (true) {
+	//
+	// return uname;
+	// } else {
+	// return null;
+	// }
+	// } catch (Exception ex) {
+	// ex.printStackTrace();
+	// return null;
+	// }
+	// }
+	//
+	// }
+	//
+
+}
