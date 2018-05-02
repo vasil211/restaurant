@@ -32,7 +32,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${users}" var="user"> 
+				<c:forEach items="${user}" var="user"> 
 				
 					<tr action="SelectUser" method="Get">
 						<td><c:out value="${user.getUname()}" /></td>

@@ -8,9 +8,6 @@
 <meta charset="UTF-8">
 <title>Welcome back</title>
 <link rel="stylesheet" href="css/adminFirstPage.css">
-
-
-
 </head>
 
 <body>
@@ -20,7 +17,7 @@
 	<div class="page">
 		<div class="user" >
 			<h2>
-				<a href="selectUser.jsp">Users</a>
+				<a href="SelectUser">Users</a>
 			</h2>
 			<br>
 

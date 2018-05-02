@@ -27,7 +27,7 @@
     <servlet-name>dashboard</servlet-name>
     <url-pattern>/dashboard</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>AdminFirstPage</servlet-name>
     <servlet-class>com.restaurant.controller.AdminFirstPage</servlet-class>
   </servlet>
@@ -35,12 +35,20 @@
     <servlet-name>AdminFirstPage</servlet-name>
     <url-pattern>/AdminFirstPage</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>SelectUser</servlet-name>
     <servlet-class>com.restaurant.controller.SelectUser</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SelectUser</servlet-name>
     <url-pattern>/SelectUser</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>ListUser</servlet-name>
+    <servlet-class>com.restaurant.controller.ListUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListUser</servlet-name>
+    <url-pattern>/ListUser</url-pattern>
   </servlet-mapping>
 </web-app>
