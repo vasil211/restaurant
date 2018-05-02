@@ -18,7 +18,11 @@
 		<h1>Welcome back</h1>
 	</div>
 	<div class="page">
+<<<<<<< HEAD
 		<div class="user" >
+=======
+		<div class="user" action="AdminFirstPage" method="Get">
+>>>>>>> ac99de9924e1b835ae5d2147887c8f597fd36894
 			<h2>
 				<a href="selectUser.jsp">Users</a>
 			</h2>

@@ -273,6 +273,7 @@ public class UserDao {
 
 		return user;
 	}
+<<<<<<< HEAD
 
 	// public boolean UnameValidator(String uname) {
 	// try {
@@ -321,3 +322,52 @@ public class UserDao {
 	//
 
 }
+=======
+	
+//	public boolean UnameValidator(String uname) {
+//		try {
+//			PreparedStatement st = connection.prepareStatement("select * from user where uname = ?");
+//			ps.setString(1, .getUname());
+//			ResultSet r1 = st.executeQuery();
+//			String usernameCounter;
+//		if(r1.next()) {
+//			usernameCounter =  r1.getString("uname");
+//			if(usernameCounter == uname) {
+//				
+//				System.out.println("It already exists!");
+//				usernameExists = true;
+//			}
+//		}
+//		}
+//		catch (SQLException e) 
+//	     {
+//	        System.out.println("SQL Exception: "+ e.toString());
+//	     } 
+//	  
+//	 return usernameExists;
+//		
+//		}
+//	public boolean UnameValidator(String uname) {
+//		
+//			try {
+//				PreparedStatement ps = connection.prepareStatement("select * from user where uname = ?");
+//				ps.setString(1, uname);
+//				ResultSet rs = ps.executeQuery();
+//				if (true) {
+//					
+//					return uname;
+//				} else {
+//					return null;
+//				}
+//			} catch (Exception ex) {
+//				ex.printStackTrace();
+//				return null;
+//			}
+//		}
+//	
+//	}
+//	
+	
+	}
+	
+>>>>>>> ac99de9924e1b835ae5d2147887c8f597fd36894

@@ -11,12 +11,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.restaurant.model.User;
 
+<<<<<<< HEAD
 public class AdminFirstPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static String USERS = "selectUser.jsp";
 	private static String ORDERS = "orders.jsp";
 	private static String MENU = "menu.jsp";
 	private static String TABLES = "tables.jsp";
+=======
+@WebServlet("/AdminFirstPage")
+public class AdminFirstPage extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private static String USERS = "/selectUser.jsp";
+	private static String ORDERS = "/orders.jsp";
+	private static String MENU = "/menu.jsp";
+	private static String TABLES = "/tables.jsp";
+>>>>>>> ac99de9924e1b835ae5d2147887c8f597fd36894
 
 	public AdminFirstPage() {
 		super();
@@ -28,7 +38,10 @@ public class AdminFirstPage extends HttpServlet {
 		if (request.getSession().getAttribute("isLogged") != null) {
 
 			int roleId = (int) request.getSession().getAttribute("role_Id");
+<<<<<<< HEAD
 			if (roleId == 1) {
+=======
+>>>>>>> ac99de9924e1b835ae5d2147887c8f597fd36894
 			String forward = "";
 			String action = request.getParameter("action");
 			System.out.println(action);
@@ -45,7 +58,10 @@ public class AdminFirstPage extends HttpServlet {
 			response.getWriter().append("Served at: ").append(request.getContextPath());
 		}
 	}
+<<<<<<< HEAD
 	}
+=======
+>>>>>>> ac99de9924e1b835ae5d2147887c8f597fd36894
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
