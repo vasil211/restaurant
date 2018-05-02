@@ -13,3 +13,4 @@
 *.rar
 
 .classpath
+**/Database.java

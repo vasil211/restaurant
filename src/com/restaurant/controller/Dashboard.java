@@ -31,15 +31,9 @@ public class Dashboard extends HttpServlet {
 			// !!
 			int roleId = (int) request.getSession().getAttribute("role_Id");
 			if (roleId == 1) {
-				RequestDispatcher view = request.getRequestDispatcher("/adminFirstPage.jsp");
 				request.setAttribute("userRole", request.getSession().getAttribute("role_Id"));
-				List<com.restaurant.model.User> user = dao.getAllUsers();
 
-				request.setAttribute("user", user);
-				for (com.restaurant.model.User temp : user) {
-					System.out.println(temp.getUname());
-				}
-				view.forward(request, response);
+				response.sendRedirect(request.getContextPath() + "/AdminFirstPage");
 			} else if (roleId == 2) {
 
 				RequestDispatcher view = request.getRequestDispatcher("/menu.jsp");
@@ -53,7 +47,7 @@ public class Dashboard extends HttpServlet {
 		}
 
 		else {
-			response.sendRedirect(request.getContextPath() + "/index.jsp?error=notLoggedIn");
+			response.sendRedirect(request.getContextPath() + "/loginPage.jsp?error=notLoggedIn");
 		}
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
