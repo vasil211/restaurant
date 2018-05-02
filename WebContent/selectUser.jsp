@@ -8,13 +8,8 @@
 		<h1>Select type of user</h1>
 		<link rel="stylesheet" href="css/selectUser.css">
 	</div>
-<<<<<<< HEAD
 	<form action="SelectUser" method="Get">
 	<div class="page" >
-=======
-	
-	<div class="page" action="SelectUser" method="Get" >
->>>>>>> ac99de9924e1b835ae5d2147887c8f597fd36894
 		<div class="cook">
 			<h1>
 			<button type="submit" value="cook">Cook</button>
