@@ -53,13 +53,13 @@ public class RegistrationController extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/loginPage.jsp?success=Registered");
 
 		} else if ("firstName" == null) {
-			System.out.println("wrong firstName");
-			String wrongfirstName = "Wrong First Name";
+			System.out.println("Missing firstName");
+			String wrongfirstName = "Missing First Name";
 			response.sendRedirect(request.getContextPath() + "/loginPage.jsp?error=" + wrongfirstName);
 
 		} else if ("lastName" == null) {
-			System.out.println("wrong lastName");
-			String wronglastName = "Wrong Last Name";
+			System.out.println("Missing lastName");
+			String wronglastName = "Missing Last Name";
 			response.sendRedirect(request.getContextPath() + "/loginPage.jsp?error=" + wronglastName);
 
 		} else if (chEmail == null) {
@@ -68,13 +68,13 @@ public class RegistrationController extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/loginPage.jsp?error=" + wrongEmail);
 
 		} else if (hashedPass == null) {
-			System.out.println("wrong Password");
-			String wrongPassword = "Wrong Password";
+			System.out.println("Missing Password");
+			String wrongPassword = "Missing Password";
 			response.sendRedirect(request.getContextPath() + "/loginPage.jsp?error=" + wrongPassword);
 
 		} else if ("uname" == null) {
-			System.out.println("wrong uname");
-			String wrongUname = "Wrong Uname";
+			System.out.println("Missing uname");
+			String wrongUname = "Missing Uname";
 			response.sendRedirect(request.getContextPath() + "/loginPage.jsp?error=" + wrongUname);
 
 		} else if ("phone" == null) {
@@ -83,8 +83,8 @@ public class RegistrationController extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/loginPage.jsp?error=" + wrongPhone);
 
 		} else if ("EGN" == null) {
-			System.out.println("wrong EGN");
-			String wrongEGN = "Wrong EGN";
+			System.out.println("Missing EGN");
+			String wrongEGN = "Missing EGN";
 			response.sendRedirect(request.getContextPath() + "/loginPage.jsp?error=" + wrongEGN);
 		} else {
 			System.out.println("failed to insert the data");

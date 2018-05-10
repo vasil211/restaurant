@@ -33,10 +33,10 @@ public class Dashboard extends HttpServlet {
 			if (roleId == 1) {
 				request.setAttribute("userRole", request.getSession().getAttribute("role_Id"));
 
-				response.sendRedirect(request.getContextPath() + "/AdminFirstPage");
+				response.sendRedirect(request.getContextPath() + "/WEB-INF/AdminFirstPage");
 			} else if (roleId == 2) {
 
-				RequestDispatcher view = request.getRequestDispatcher("/menu.jsp");
+				RequestDispatcher view = request.getRequestDispatcher("UserMenu");
 				request.setAttribute("userRole", request.getSession().getAttribute("role_Id"));
 				view.forward(request, response);
 			} else if (roleId == 3) {

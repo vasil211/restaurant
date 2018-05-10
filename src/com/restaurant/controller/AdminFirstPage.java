@@ -14,10 +14,6 @@ import com.restaurant.model.User;
 
 public class AdminFirstPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	// private static String USERS = "selectUser.jsp";
-	// private static String ORDERS = "orders.jsp";
-	// private static String MENU = "menu.jsp";
-	// private static String TABLES = "tables.jsp";
 
 	public AdminFirstPage() {
 		super();
@@ -30,18 +26,7 @@ public class AdminFirstPage extends HttpServlet {
 
 			int roleId = (int) request.getSession().getAttribute("role_Id");
 			if (roleId == 1) {
-				// String forward = "";
-				// String action = request.getParameter("action");
-				// System.out.println(action);
-				// if (action.equalsIgnoreCase("users")) {
-				// forward = USERS;
-				// } else if (action.equalsIgnoreCase("orders")) {
-				// forward = ORDERS;
-				// } else if (action.equalsIgnoreCase("menu")) {
-				// forward = MENU;
-				// } else {
-				// forward = TABLES;
-				// }
+		
 				request.getRequestDispatcher("/WEB-INF/adminFirstPage.jsp").forward(request, response);
 			}
 		}

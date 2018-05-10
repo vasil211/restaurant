@@ -26,6 +26,7 @@ public class ListUser extends HttpServlet {
 		if (request.getSession().getAttribute("isLogged") != null) {
 			// !!
 			int roleId = (int) request.getSession().getAttribute("role_Id");
+			    
 			if (roleId == 1) {
 				String action = request.getParameter("action");
 				System.out.println("action: " + action);
@@ -58,7 +59,8 @@ public class ListUser extends HttpServlet {
 				request.getRequestDispatcher("/WEB-INF/userList.jsp").forward(request, response);
 			}
 		} else {
-			response.sendRedirect(request.getContextPath() + "/loginPage.jsp?error=notLoggedIn");
+			String notLoggedIn = "Not Logged In";
+			response.sendRedirect(request.getContextPath() + "/loginPage.jsp?error="+ notLoggedIn);
 		}
 	}
 
