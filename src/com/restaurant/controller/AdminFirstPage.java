@@ -29,6 +29,8 @@ public class AdminFirstPage extends HttpServlet {
 		
 				request.getRequestDispatcher("/WEB-INF/adminFirstPage.jsp").forward(request, response);
 			}
+		}else {
+			response.sendRedirect(request.getContextPath() + "/loginPage.jsp?error=notLoggedIn");
 		}
 	}
 

@@ -32,11 +32,9 @@ public class Dashboard extends HttpServlet {
 			int roleId = (int) request.getSession().getAttribute("role_Id");
 			if (roleId == 1) {
 				request.setAttribute("userRole", request.getSession().getAttribute("role_Id"));
-
-				response.sendRedirect(request.getContextPath() + "/WEB-INF/AdminFirstPage");
+                response.sendRedirect(request.getContextPath() + "/WEB-INF/AdminFirstPage");
 			} else if (roleId == 2) {
-
-				RequestDispatcher view = request.getRequestDispatcher("UserMenu");
+                RequestDispatcher view = request.getRequestDispatcher("UserMenu");
 				request.setAttribute("userRole", request.getSession().getAttribute("role_Id"));
 				view.forward(request, response);
 			} else if (roleId == 3) {

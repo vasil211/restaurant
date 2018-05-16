@@ -117,7 +117,7 @@ public class MenuDao {
 	public Menu getFoodByID(int menu_Id) {
 		Menu menu = new Menu();
 		try {
-			PreparedStatement preparedStatement = connection.prepareStatement("select * from users where name=?");
+			PreparedStatement preparedStatement = connection.prepareStatement("select * from menu where id=?");
 			preparedStatement.setInt(1, menu_Id);
 			ResultSet rs = preparedStatement.executeQuery();
 
@@ -126,6 +126,28 @@ public class MenuDao {
 				menu.setFoodType(rs.getString("foodType"));
 				menu.setDescription(rs.getString("description"));
 				menu.setPrice(rs.getDouble("price"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return menu;
+	}
+
+	public List<Menu> getAllFoodByType(String foodType) {
+		List<Menu> menu = new ArrayList<Menu>();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement("select * from menu where foodType=?");
+			preparedStatement.setString(1, foodType);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				Menu menu1 = new Menu();
+				menu1.setName(rs.getString("name"));
+				menu1.setFoodType(rs.getString("foodType"));
+				menu1.setDescription(rs.getString("description"));
+				menu1.setPrice(rs.getDouble("price"));
+				menu.add(menu1);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

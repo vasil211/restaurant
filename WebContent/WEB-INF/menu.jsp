@@ -6,7 +6,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Food4U</title>
-	<link rel="stylesheet" type="text/css" href="menuStyle.css" />	
+	<link rel="stylesheet" type="text/css" href="css/menuStyle.css" />	
 	<link href="css/font-awesome.min.css" rel="stylesheet"/>
 	<link rel="shortcut-icon" type="image/png" href="../try%2520try%2520again/logo.png"/>
 </head>
@@ -34,7 +34,7 @@
         </div>
 
         <div class="menu-switching">
-            <div id="Starters" class="container dish" style="display:none">
+            <div id="Starters" class="container dish" >
                 <h2>Starters</h2>
                 <form>
                     <table>
@@ -49,8 +49,8 @@
                 <c:forEach items="${menu}" var="menu">
 					<tr>
 						<td><c:out value="${menu.getName()}" /></td>
-						<td><c:out value="${user.getPrice()}" /></td>
-						<td><c:out value="${user.getDesc()}" />
+						<td><c:out value="${menu.getPrice()}" /></td>
+						<td><c:out value="${menu.getDescription()}" />
                         </td>
 					</tr>
 					</c:forEach>
@@ -73,8 +73,8 @@
                 <c:forEach items="${menu}" var="menu">
 					<tr>
 						<td><c:out value="${menu.getName()}" /></td>
-						<td><c:out value="${user.getPrice()}" /></td>
-						<td><c:out value="${user.getDesc()}" />
+						<td><c:out value="${menu.getPrice()}" /></td>
+						<td><c:out value="${menu.getDescription()}" />
                         </td>
 					</tr>
 					</c:forEach>
@@ -99,8 +99,8 @@
                 <c:forEach items="${menu}" var="menu">
 					<tr>
 						<td><c:out value="${menu.getName()}" /></td>
-						<td><c:out value="${user.getPrice()}" /></td>
-						<td><c:out value="${user.getDesc()}" />
+					<td><c:out value="${menu.getPrice()}" /></td>
+						<td><c:out value="${menu.getDescription()}" />
                         </td>
 					</tr>
 					 </c:forEach>
