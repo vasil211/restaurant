@@ -29,16 +29,18 @@ public class UserMenu extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		if (request.getSession().getAttribute("isLogged") != null) {
 			int roleId = (int) request.getSession().getAttribute("role_Id");
-			// List<Menu> getAllFoodByType(String foodType)
-			List<com.restaurant.model.Menu> menu = dao.getAllFood();
+		    List<com.restaurant.model.Menu> menu = dao.getAllFood();
 			request.setAttribute("menu", menu);
 			for (com.restaurant.model.Menu temp : menu) {
 			}
 			request.getRequestDispatcher("/WEB-INF/menu.jsp").forward(request, response);
 			
 		} else {
-			String notLoggedIn = "Not Logged In";
-			response.sendRedirect(request.getContextPath() + "/loginPage.jsp?error=" + notLoggedIn);
+			 List<com.restaurant.model.Menu> menu = dao.getAllFood();
+				request.setAttribute("menu", menu);
+				for (com.restaurant.model.Menu temp : menu) {
+				}
+				request.getRequestDispatcher("/WEB-INF/menu.jsp").forward(request, response);
 		}
 	}
 

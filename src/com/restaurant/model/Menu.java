@@ -1,8 +1,13 @@
 package com.restaurant.model;
 
 public class Menu {
-	private String name, foodType, description;
+	
+	private int id;
+	private String name;
+	private String foodType;
+	private String description;
 	private double price;
+	
 
 	public String getName() {
 		return this.name;
@@ -34,6 +39,14 @@ public class Menu {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	

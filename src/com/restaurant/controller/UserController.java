@@ -22,6 +22,7 @@ public class UserController extends HttpServlet {
 	public UserController() {
 		super();
 		dao = new UserDao();
+		
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -58,7 +59,6 @@ public class UserController extends HttpServlet {
 	}
 
 	private int integerParsing(String parameter) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -71,7 +71,6 @@ public class UserController extends HttpServlet {
 		if (user != null) {
 			request.getSession().setAttribute("isLogged", true);
 			request.getSession().setAttribute("Uname", user.getUname());
-			
 			request.getSession().setAttribute("role_Id", user.getRole().getId());
 			response.sendRedirect(request.getContextPath() + "/dashboard");
 		} else {

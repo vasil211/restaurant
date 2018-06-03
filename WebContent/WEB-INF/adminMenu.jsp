@@ -12,16 +12,20 @@
 </head>
 <body>
 	<header>
+	
 		<div id="header-inner">
 			
 			<nav>
-				<ul><li><a href="HomePage?action=Home">Home</a></li>
+				<ul>
+					<li><a href="HomePage?action=Home">Home</a></li>
                     <li><a href="HomePage?action=Menu">Menu</a></li>
                     <li><a href="HomePage?action=Account">Account</a></li>
                     <li><a href="HomePage?action=Login">Login</a></li>
+
 				</ul>
 			</nav>
 		</div>
+		
 	</header>
     
      <div class="side-menu">
@@ -50,6 +54,8 @@
 						<td><c:out value="${menu.getName()}" /></td>
 						<td><c:out value="${menu.getPrice()}" /></td>
 						<td><c:out value="${menu.getDescription()}" />
+						<td><a
+							href="UserController?action=delete&menu_Id=<c:out value="${user.getName()}"/>">Delete</a></td>
                         </td>
 					</tr>
 					</c:forEach>

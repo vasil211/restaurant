@@ -68,7 +68,7 @@ public class MenuDao {
 
 	public void deleteFood(int menu_Id) {
 		try {
-			PreparedStatement preparedStatement = connection.prepareStatement("delete from menu where name=?");
+			PreparedStatement preparedStatement = connection.prepareStatement("delete from menu where id=?");
 			preparedStatement.setInt(1, menu_Id);
 			preparedStatement.executeUpdate();
 
@@ -80,12 +80,13 @@ public class MenuDao {
 	public void updateFood(Menu menu) {
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(
-					"update menu set name=?, foodType=?, description= ?, price= ? " + "where name= ?");
+					"update menu set name=?, foodType=?, description= ?, price= ? " + "where id= ?");
 
 			preparedStatement.setString(1, menu.getName());
 			preparedStatement.setString(2, menu.getFoodType());
 			preparedStatement.setString(3, menu.getDescription());
 			preparedStatement.setDouble(4, menu.getPrice());
+			preparedStatement.setInt(5, menu.getId());
 
 			preparedStatement.executeUpdate();
 

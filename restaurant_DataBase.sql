@@ -113,4 +113,4 @@ insert into user(role_id,uname,firstName,lastName,phone,EGN,email,password)
 values(04,'waiter','stoqn','stoyanov','0854234296','03435385','asdnd@abv.bg','f64cff138020a2060a9817272f563b3c');
 
 insert into menu (name,foodType,description,price)
-values('zdr','nz','samoleta na baba',5.10);
+values('Bavaeska nadenica','meat','meso',5.10);

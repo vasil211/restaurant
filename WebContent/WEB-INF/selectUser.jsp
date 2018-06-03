@@ -8,33 +8,31 @@
 		<h1>Select type of user</h1>
 		<link rel="stylesheet" href="css/selectUser.css">
 	</div>
-	<form action="ListUser" method="Get">
 	<div class="page" >
 		<div class="cook">
 			<h1>
-			<button name="action" type="submit" value="cook">Cook</button>
+			<a href="ListUser?action=Cook">Update</a>
 			</h1>
 			<br>
 		</div>
 		<div class="waiter">
 			<h1>
-			<button name="action" type="submit" value="waiter">Waiter</button>
+			<a href="ListUser?action=Waiter">Waiter</a>
 			</h1>
 			<br>
 		</div>
 		<div class="user">
 			<h1>
-			<button name="action" type="submit" value="user">User</button>
+			<a href="ListUser?action=User">User</a>
 			</h1>
 			<br>
 		</div>
 		<div class="admin">
 			<h1>
-			<button name="action" type="submit" value="admin">Admin</button>
+			<a href="ListUser?action=Admin">Admin</a>
 			</h1>
 			<br>
 		</div>
 	</div>
-</form>
 </body>
 </html>

@@ -24,7 +24,7 @@
 		</div>
 		<div class="menu">
 			<h2>
-				<a href="menuList.jsp">menu</a>
+				<a href="AdminMenu">menu</a>
 			</h2>
 			<br>
 

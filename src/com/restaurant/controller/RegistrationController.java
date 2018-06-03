@@ -35,9 +35,6 @@ public class RegistrationController extends HttpServlet {
 		String email = request.getParameter("email");
 		String chEmail = dao.validEmail(email);
 		System.out.println(chEmail);
-//		String unameCh = request.getParameter("uname");
-//		String validUname = dao.UnameValidator(validedUname);
-
 		User user = new User();
 		user.setFirstName(request.getParameter("firstName"));
 		user.setLastName(request.getParameter("lastName"));

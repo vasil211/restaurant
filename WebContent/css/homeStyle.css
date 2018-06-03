@@ -1,0 +1,105 @@
+html,body{
+    height: 100%;
+}
+body{
+    font-family: sans-serif;
+    font-size: 100%;
+    margin: 0;
+}
+.page{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/snimka1.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+.top-content{
+    position: absolute;
+    left: 0;
+    background-color: white;
+    height: 80px;
+    width: 100%;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+}
+.zaglavie{
+    float: left;
+    height: 100%;
+}
+.zaglavie img{
+    height: 100%;
+    width: auto;
+    display: inline-block;
+    float: left;
+    border-radius: 100px;
+}
+.zaglavie h1{
+    font-size: 2.8em;
+    margin: 0;
+    display: inline-block;
+    line-height: 80px;
+    color: burlywood;
+    text-shadow: 2px 2px gray;
+}
+.menu{
+    float: right;
+}
+.menu ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.menu ul li{
+    float: left;
+}
+.menu ul li:last-child{
+    margin-right: 0;
+}
+.menu ul li a{
+    display: block;
+    padding: 0 20px;
+    line-height: 80px;
+    text-decoration: none;
+    color: firebrick;
+    font-size: 1.2em;
+    font-variant: small-caps;
+    transition: color linear 0.2s;
+}
+.menu ul li a:hover{
+    color:bisque;
+}
+.menu ul li a.active{
+    background-color: burlywood;
+    color: white;
+}
+.bottom-content{
+     float: below;
+    height: 50%;
+    text-align: center;
+    
+    
+    }
+.bottom-content img{
+    position: relative;
+    height: 100%;
+    width: auto;
+    display: inline-block;
+    float: below;
+    border-radius: 300%;
+    top: 790px;
+  
+   
+}
+.bottom-content ul{
+    position: relative;
+    list-style-type: none;
+}
+.bottom-content ul.phone{
+    float: inherit;
+    margin: 370px;
+    
+    
+}
