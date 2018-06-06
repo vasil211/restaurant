@@ -32,7 +32,7 @@
 
 		<div class="orders">
 			<h2>
-				<a href="ordersList.jsp">orders</a>
+				<a href="GetOrders">orders</a>
 			</h2>
 			<br>
 

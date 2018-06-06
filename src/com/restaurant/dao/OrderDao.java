@@ -67,7 +67,7 @@ public class OrderDao {
 
 				int tableId = rs.getInt("table_id");
 				int user_id = rs.getInt("user_id");
-			
+
 				TableDao tableDao = new TableDao();
 				Table table = tableDao.getTableById(tableId);
 				UserDao userDao = new UserDao();
@@ -89,6 +89,38 @@ public class OrderDao {
 		return orders;
 	}
 
+	public List<Order> getAllWaitingOrders() {
+		List<Order> orders = new ArrayList<Order>();
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("SELECT * FROM restaurant.orders where orderState_id=1");
+			while (rs.next()) {
+				Order order = new Order();
+				
+				int tableId = rs.getInt("table_id");
+				int user_id = rs.getInt("user_id");
+
+				TableDao tableDao = new TableDao();
+				Table table = tableDao.getTableById(tableId);
+				UserDao userDao = new UserDao();
+				User user = userDao.getUserById(user_id);
+				order.setOrderId(rs.getInt("id"));
+				order.setTable(table);
+				order.setTimeOfOrder(rs.getTime("timeOfOrder"));
+				order.setTimeOfCook(rs.getTime("timeOfCook"));
+				order.setTimeOfPayment(rs.getTime("timeOfPayment"));
+				order.setDate(rs.getDate("date"));
+				order.setUser(user);
+				orders.add(order);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return orders;
+	}
+
 	public Order getOrder(int id) {
 		Order order = null;
 		try {
@@ -99,15 +131,15 @@ public class OrderDao {
 			{
 				int userId = rs.getInt("user_id");
 				int tableId = rs.getInt("table_id");
-//				int orderStateId = rs.getInt("orderState_id");
+				// int orderStateId = rs.getInt("orderState_id");
 
 				order = new Order();
 				TableDao tableDao = new TableDao();
 				Table table = tableDao.getTableById(tableId);
 				UserDao userDao = new UserDao();
 				User user = userDao.getUserById(userId);
-//				OrderStateDao orderStateDao = new OrderStateDao();
-//				OrderStateDao orderState = new OrderStateDao();
+				// OrderStateDao orderStateDao = new OrderStateDao();
+				// OrderStateDao orderState = new OrderStateDao();
 
 				order.setTable(table);
 				order.setTimeOfOrder(rs.getTime("timeOfOrder"));

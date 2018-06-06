@@ -47,7 +47,7 @@ CREATE TABLE orders (
     table_id INT NOT NULL,
     timeOfOrder TIME NOT NULL,
     timeOfCook Time null,
-    timeOfPaymet Time null,
+    timeOfPayment Time null,
     date DATE NOT NULL,
     user_id INT NOT NULL,
     orderState_id INT NOT NULL,
@@ -113,4 +113,17 @@ insert into user(role_id,uname,firstName,lastName,phone,EGN,email,password)
 values(04,'waiter','stoqn','stoyanov','0854234296','03435385','asdnd@abv.bg','f64cff138020a2060a9817272f563b3c');
 
 insert into menu (name,foodType,description,price)
-values('Bavaeska nadenica','meat','meso',5.10);
+values('Bavarska nadenica','meat','meso',5.10);
+
+insert into menu (name,foodType,description,price)
+values('qica na ochi','starter','qica',2.10);
+
+insert into menu (name,foodType,description,price)
+values('qica na 2 ochi','starter','qica',2.11);
+
+insert into menu (name,foodType,description,price)
+values('pil. supa','soup','pil',5.10);
+
+
+insert into orders(table_id, timeOfOrder, timeOfCook, timeOfPayment, date, user_id, orderState_id)
+value(01, '09:17:26', '09:17:30', '09:17:50', '2018-05-17', 02, 01);

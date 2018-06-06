@@ -39,6 +39,9 @@ public class Dashboard extends HttpServlet {
 				request.setAttribute("userRole", request.getSession().getAttribute("role_Id"));
 				view.forward(request, response);
 			} else if (roleId == 3) {
+				RequestDispatcher view = request.getRequestDispatcher("/GetOrders");
+				request.setAttribute("userRole", request.getSession().getAttribute("role_Id"));
+				view.forward(request, response);
 
 			} else if (roleId == 4) {
 

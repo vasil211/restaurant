@@ -75,4 +75,20 @@
     <servlet-name>Menu</servlet-name>
     <url-pattern>/Menu</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>GetOrders</servlet-name>
+    <servlet-class>com.restaurant.controller.GetOrders</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetOrders</servlet-name>
+    <url-pattern>/GetOrders</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CookOrders</servlet-name>
+    <servlet-class>com.restaurant.controller.CookOrders</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CookOrders</servlet-name>
+    <url-pattern>/CookOrders</url-pattern>
+  </servlet-mapping>
 </web-app>
