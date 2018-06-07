@@ -22,11 +22,11 @@
 			<thead>
 				<tr>
 					<th>id</th>
-					<th>table_id</th>
-					<th>timeOfOrder</th>
-					<th>timeOfCook</th>
-					<th>timeOfPayment</th>
-					<th>date</th>
+					<th>Table Number</th>
+					<th>Time Of Order</th>
+					<th>Time Of Cook</th>
+					<th>Time Of Payment</th>
+					<th>Date</th>
 					<th>user_id</th>
 					
  

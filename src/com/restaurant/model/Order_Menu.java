@@ -1,6 +1,6 @@
 package com.restaurant.model;
 
-public class orders_menu {
+public class Order_Menu {
 	private Order order;
 	private Menu menu;
 
